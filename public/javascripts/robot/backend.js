@@ -1,4 +1,4 @@
-var board, pump0, pump1, pump2, pump3, pump4;
+var board, pump0, pump1, pump2, pump3, pump4, pump5;
 
 var five = require('johnny-five');
 
@@ -11,16 +11,18 @@ board.on('ready', function () {
   pump2 = new five.Led(5);
   pump3 = new five.Led(4);
   pump4 = new five.Led(3);
+  pump5 = new five.Led(8);
 
   board.repl.inject({
     p0: pump0,
     p1: pump1,
     p2: pump2,
     p3: pump3,
-    p4: pump4
+    p4: pump4,
+    p5: pump5
   });
 
-  console.log("\033[31m[MSG] Bar Mixvah Ready\033[91m");
+  console.log("\033[31m[MSG] elxyzr Ready\033[91m");
 });
 
 exports.pump = function (ingredients) {
@@ -71,6 +73,9 @@ exports.usePump = function (pump) {
     case 'pump4':
       using = pump4;
       break;
+    case 'pump5':
+        using = pump5;
+        break;
     default:
       using = null;
       break;
