@@ -19,7 +19,7 @@ a {
   background-color: #f00;
   background-position: center;
   background-size: cover;
-  background-image: url('/images/citrus-sunset.jpg');
+  background-image: url('/images/martinis-sequence2.jpg');
 }
 
 .title {
@@ -28,7 +28,9 @@ a {
   line-height: 150px;
   font-weight: 100;
   margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+  
 }
 
 .subtitle {
@@ -36,6 +38,7 @@ a {
   text-align: center;
   line-height: 50px;
   margin: -10px 0px 30px 0px;
+  color: #FFFFFF;
 }
 
 .section {

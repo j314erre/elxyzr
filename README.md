@@ -1,9 +1,12 @@
 Notes
 ----------
 
->  npm install johnny-five
->  npm install serialport
->  node app.js
+Installation:
+
+* npm install johnny-five
+* npm install serialport
+* node app.js
+
 
 Usage
 -----
