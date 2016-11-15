@@ -11,7 +11,7 @@ block content
   div#fullWidth(ng-controller="DrinkController", ng-init="setDrinks( #{JSON.stringify(drinks)} ); setPumps( #{JSON.stringify(pumps)} ); writeNumDuplicates()") 
     div#drinkScope.container-fluid
       div#cover
-        h1.title Elxyzr
+        h1.title elxyzr
         //h2.subtitle Bespoke Spirits
         div#pumps.row
           div.floatingPumpButtons
@@ -21,11 +21,11 @@ block content
             div#hiddenPumpControls
               div.pumpButton.singlePump(ng-repeat="pump in pumps.ingredients") {{$index}}
               div#allPumps.pumpButton.small All
-            div#pumpControlToggle.pumpButton PUMP
+            div#pumpControlToggle.pumpButton *
           div.pumpContainer(ng-repeat="pump in pumps.ingredients")
             select.mixers(ng-change="savePumpValue($index); writeNumDuplicates()", ng-model="pump.ingredient", ng-options="i for i in ingredientsList")
       div#drinks.row
-        h1.section Select a Drink
+        h1.section Select a Spirit
         div.drinkContainer(ng-repeat="drink in drinks | orderBy: 'name' | filter: containsIngredients", ng-click="selectDrink(drink)")
           div.hiddenIngredientFloat(class="hiddenIngredients {{selectedDrink}}")
             ul
@@ -37,10 +37,10 @@ block content
           
 
       div#selectSize 
-        h1.section Select a Size
-        div#sizeSmall.drinkSize(ng-click="selectSize('40')") 40ml
-        div#sizeMedium.drinkSize(ng-click="selectSize('200')") 200ml
-        div#sizeLarge.drinkSize(ng-click="selectSize('400')")  400ml
+        //h1.section Select a Size
+        //div#sizeSmall.drinkSize(ng-click="selectSize('40')") 40ml
+        //div#sizeMedium.drinkSize(ng-click="selectSize('200')") 200ml
+        //div#sizeLarge.drinkSize(ng-click="selectSize('400')")  400ml
 
       div#make(class="{{selectedDrink.name ? '' : 'noselection'}}")
         div#makeText.title MAKE

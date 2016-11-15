@@ -3,7 +3,7 @@ exports.show = function (Drink) {
   return function (req, res) {
     Drink.find({}, function (err, drinks) {
       res.render('edit', { 
-        title: "Bar Mixvah: Edit Drinks" ,
+        title: "Elxyzr: Edit Drinks" ,
         drinks: drinks,
       });
     });

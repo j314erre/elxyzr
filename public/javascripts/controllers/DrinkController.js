@@ -22,17 +22,21 @@ function DrinkController($scope, $http) {
   ];
 
   $scope.selectedDrink;
-  $scope.drinkTime = 10000;
+  $scope.drinkTime = 40000;
   $scope.pumpTime = 0;
 
   $scope.pumpDuplicates = 0;
 
   $scope.ingredientsList = [
-    'Vodka', 'Rum', 'Whiskey', 'Tequila', 'Gin', 'Sake', 'Soju',
-    'Orange Juice', 'Apple Juice', 'Cranberry Juice', 'Pineapple Juice', 'Mango Juice', 'Grapefruit Juice', 'Lime Juice',
-    'Coke', 'Sprite', 'Ginger Ale', 'Root Beer', 'Dr. Pepper',
-    'Blue Liqueur', 'Sweet & Sour', 'Triple Sec', 'Kaluha', 'Peach Schnapps', 'Midori Melon',
-    'Champagne'
+    'Anise', 
+    'Basil', 
+    'Citrus', 
+    'Floral', 
+    'Juniper', 
+    'Liquorice', 
+    'Spice', 
+    'Umami', 
+    'Vodka' 
   ];
 
   $scope.setDrinks = function (drinks) {
@@ -141,6 +145,16 @@ function DrinkController($scope, $http) {
     console.log('Removed ingredient at index ' + index);
   };
 
+  $scope.addNewIngredientEdit = function (drink) {
+	  drink.ingredients.push({ name: '', amount: 0 });
+	  console.log('Added new ingredient');
+  };
+
+  $scope.removeIngredientEdit = function (drink, index) { 
+	  drink.ingredients.splice(index, 1);
+	  console.log('Removed ingredient at index ' + index);
+  };
+  
   // Filter for drinks
   $scope.containsIngredients = function (drink) {
     var numIngredients = drink.ingredients.length;
