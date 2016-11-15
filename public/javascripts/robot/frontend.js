@@ -72,7 +72,7 @@ $(document).ready(function () {
       pumpControlsVisible = false;
       $('#hiddenPumpControls').hide();
       $('#plusMinus').hide();
-      $(this).text("PUMP");
+      $(this).text("*");
       $(this).removeClass("active");
     } else {
       pumpControlsVisible = true;
