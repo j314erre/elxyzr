@@ -21,7 +21,7 @@ $(document).ready(function () {
 
   // Front end drink making
   $('#make').on('click touch', function () {
-    if ($('#make').hasClass('noselection') === true) {
+    if ($scope.selectedDrink.ingredients.length < 1) {
       alert('Please select a drink first.');
       return;
     }
@@ -121,6 +121,16 @@ $(document).ready(function () {
   // setInterval(function () {
   //   resizeContainers();
   // }, 500);
+  
+  
+  
+  $('.showValue').on('change', function ()  {
+	    var slidernum = $(this).index();
+	    var vertical = true;
+	    var val = $(this).value();
+  });
+  
+  
 });
 
 function resizeCover(view) {
@@ -212,3 +222,5 @@ function stopOnePump(self) {
   self.removeClass('active');
   socket.emit('Stop Pump', "pump"+self.index());
 }
+
+

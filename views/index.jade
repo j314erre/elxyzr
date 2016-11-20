@@ -24,8 +24,15 @@ block content
             div#pumpControlToggle.pumpButton *
           div.pumpContainer(ng-repeat="pump in pumps.ingredients")
             select.mixers(ng-change="savePumpValue($index); writeNumDuplicates()", ng-model="pump.ingredient", ng-options="i for i in ingredientsList")
+            div.slidershell(id="slidershell{{$index}}")
+              input.slidervertical(id="slider{{$index}}", type="range", min="0", max="10", value="0", orient="vertical", ng-model="pump.amount", ng-change="sliderValue()")
+            div.slidervalue(id="slidervalue{{$index}}") {{pump.amount}}
+              //div.sliderfill(id="sliderfill{{$index}}")
+              //div.sliderthumb(id="sliderthumb{{$index}}")
+              //div.slidervalue(id="slidervalue{{$index}}") 0
+              //input.slider.showValue(id="slider{{$index}}", type="range", min="0", max="100", value="0", ng-model="value", ng-change="showValue({{value}}, {{$index}} ,true);", orient="vertical")
       div#drinks.row
-        h1.section Select a Spirit
+        h1.section Preset Spirits
         div.drinkContainer(ng-repeat="drink in drinks | orderBy: 'name' | filter: containsIngredients", ng-click="selectDrink(drink)")
           div.hiddenIngredientFloat(class="hiddenIngredients {{selectedDrink}}")
             ul

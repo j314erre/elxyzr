@@ -11,7 +11,7 @@ function DrinkController($scope, $http) {
   $scope.pumps = {
     label: "pumps",
     ingredients: [
-      { label: "pump0", ingredient: "" }
+      { label: "pump0", ingredient: "", amount: 0 }
     ]
   };
 
@@ -67,11 +67,11 @@ function DrinkController($scope, $http) {
     if (typeof $scope.pumps === 'undefined') {
       $scope.pumps = {
         label: "pumps",
-        ingredients: [ { label: "pump0", ingredient: "" } ]
+        ingredients: [ { label: "pump0", ingredient: "", amount: 0 } ]
       }
     } else {
       index = $scope.pumps.ingredients.length;
-      $scope.pumps.ingredients.push({ label: "pump" + String(index), ingredient: "" });
+      $scope.pumps.ingredients.push({ label: "pump" + String(index), ingredient: "", amount: 0 });
     }
 
     $http.post('/updatepump.json', $scope.pumps).success(function (data) {
@@ -96,9 +96,17 @@ function DrinkController($scope, $http) {
   };
 
   $scope.selectDrink = function (drink) {
-    //console.log('select', arguments, this);
+    console.log('select', arguments, this);
     $scope.selectedDrink = drink;
 
+    for (var p in $scope.pumps.ingredients) {
+	  $scope.pumps.ingredients[p].amount = 0;
+      for (var i in drink.ingredients) {
+    	  if ($scope.pumps.ingredients[p].ingredient === drink.ingredients[i].name) {
+    		  $scope.pumps.ingredients[p].amount = drink.ingredients[i].amount;
+    	  }
+      }
+    }
     if ($scope.lastSelected) {
       $scope.lastSelected.selectedDrink = '';
     }
@@ -146,13 +154,13 @@ function DrinkController($scope, $http) {
   };
 
   $scope.addNewIngredientEdit = function (drink) {
-	  drink.ingredients.push({ name: '', amount: 0 });
-	  console.log('Added new ingredient');
+    drink.ingredients.push({ name: '', amount: 0 });
+    console.log('Added new ingredient');
   };
 
   $scope.removeIngredientEdit = function (drink, index) { 
-	  drink.ingredients.splice(index, 1);
-	  console.log('Removed ingredient at index ' + index);
+    drink.ingredients.splice(index, 1);
+    console.log('Removed ingredient at index ' + index);
   };
   
   // Filter for drinks
@@ -209,4 +217,25 @@ function DrinkController($scope, $http) {
       console.log(data);
     });
   };
+  
+  $scope.sliderValue = function () {
+	  //alert('showValue(' + val + ',' + slidernum + ',' + vertical + ')');
+    $scope.selectedDrink = {
+              name: 'Custom',
+              image: '',
+              ingredients: [
+              ]
+    };
+
+    for (var p in $scope.pumps.ingredients) {
+      $scope.selectedDrink.ingredients.push({ name: $scope.pumps.ingredients[p].ingredient, amount: $scope.pumps.ingredients[p].amount });
+    }
+    if ($scope.lastSelected) {
+        $scope.lastSelected.selectedDrink = '';
+    }
+
+    this.selectedDrink = 'selectedDrink';
+    $scope.lastSelected = this;
+  };
+
 }

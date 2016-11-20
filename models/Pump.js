@@ -9,6 +9,7 @@ exports.PumpSchema = new Mongoose.Schema({
   label: { type: String, unique: true, sparse: true, required: true },
   ingredients: [{ 
     label: String, 
-    ingredient: String
+    ingredient: String,
+    amount: Number
   }]
 });
