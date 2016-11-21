@@ -26,7 +26,7 @@ function DrinkController($scope, $http) {
   $scope.pumpTime = 0;
 
   $scope.pumpDuplicates = 0;
-
+  $scope.baseIngredient = 'Vodka';
   $scope.ingredientsList = [
     'Anise', 
     'Basil', 
@@ -218,7 +218,7 @@ function DrinkController($scope, $http) {
     });
   };
   
-  $scope.sliderValue = function () {
+  $scope.sliderValue = function (index) {
 	  //alert('showValue(' + val + ',' + slidernum + ',' + vertical + ')');
     $scope.selectedDrink = {
               name: 'Custom',
@@ -227,6 +227,26 @@ function DrinkController($scope, $http) {
               ]
     };
 
+    if ($scope.pumps.ingredients[index].ingredient !== $scope.baseIngredient) {
+        var subtotal = 0.0;
+        var baseindex = -1;
+        for (var p in $scope.pumps.ingredients) {
+        	if ($scope.pumps.ingredients[p].ingredient === $scope.baseIngredient) {
+        		baseindex = p;
+        	}
+        	else {
+        		subtotal += Number($scope.pumps.ingredients[p].amount);
+        		//alert(p + ',' + $scope.pumps.ingredients[p].amount + "," + subtotal)
+        	}
+        }
+        if (baseindex === -1) {
+        	alert('Base ingredient '+$scope.baseIngredient+' not found');
+        }
+        //alert(subtotal);
+        var baseamount = 40 - subtotal;
+        $scope.pumps.ingredients[baseindex].amount = (baseamount > 0) ? baseamount : 0;
+    }
+    
     for (var p in $scope.pumps.ingredients) {
       $scope.selectedDrink.ingredients.push({ name: $scope.pumps.ingredients[p].ingredient, amount: $scope.pumps.ingredients[p].amount });
     }

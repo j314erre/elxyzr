@@ -25,7 +25,7 @@ block content
           div.pumpContainer(ng-repeat="pump in pumps.ingredients")
             select.mixers(ng-change="savePumpValue($index); writeNumDuplicates()", ng-model="pump.ingredient", ng-options="i for i in ingredientsList")
             div.slidershell(id="slidershell{{$index}}")
-              input.slidervertical(id="slider{{$index}}", type="range", min="0", max="10", value="0", orient="vertical", ng-model="pump.amount", ng-change="sliderValue()")
+              input.slidervertical(id="slider{{$index}}", type="range", min="0", max="10", value="0", orient="vertical", ng-model="pump.amount", ng-change="sliderValue({{$index}})")
             div.slidervalue(id="slidervalue{{$index}}") {{pump.amount}}
               //div.sliderfill(id="sliderfill{{$index}}")
               //div.sliderthumb(id="sliderthumb{{$index}}")
