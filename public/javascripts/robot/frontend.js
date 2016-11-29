@@ -134,8 +134,10 @@ $(document).ready(function () {
 });
 
 function resizeCover(view) {
-  $('#cover').height(view.height());
-  $('#cover').css('padding-top', String(view.height()/2-140) + "px")
+	//var h = view.height();
+	var h = 800;
+  //$('#cover').height(h);
+  //$('#cover').css('padding-top', String(h/2-140) + "px")
 }
 
 function hideControls() {

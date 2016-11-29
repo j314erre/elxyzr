@@ -22,7 +22,7 @@ function DrinkController($scope, $http) {
   ];
 
   $scope.selectedDrink;
-  $scope.drinkTime = 40000;
+  $scope.drinkTime = 70000;
   $scope.pumpTime = 0;
 
   $scope.pumpDuplicates = 0;
