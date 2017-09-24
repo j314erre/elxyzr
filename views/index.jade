@@ -32,7 +32,7 @@ block content
               //div.slidervalue(id="slidervalue{{$index}}") 0
               //input.slider.showValue(id="slider{{$index}}", type="range", min="0", max="100", value="0", ng-model="value", ng-change="showValue({{value}}, {{$index}} ,true);", orient="vertical")
       div#drinks.row
-        h1.section Preset Spirits
+        h1.section Bespoke Spirits
         div.drinkContainer(ng-repeat="drink in drinks | orderBy: 'name' | filter: containsIngredients", ng-click="selectDrink(drink)")
           div.hiddenIngredientFloat(class="hiddenIngredients {{selectedDrink}}")
             ul
